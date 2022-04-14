@@ -50,6 +50,4 @@ Email Validation Regex
 
 #### Swagger API Document
 
-```https://jobs-api-stg.herokuapp.com/api-docs/
-
-```
+- https://jobs-api-stg.herokuapp.com/api-docs/

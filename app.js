@@ -19,7 +19,11 @@ const swaggerDocument = YAML.load("./swagger.yaml");
 
 const app = express();
 app.set("trust proxy", 1);
-app.get("/", (request, response) => response.send("Jobs API service"));
+app.get("/", (request, response) =>
+  response.send(
+    "<h2>Jobs API service</h2><a href='/api-docs'>Documentation</a>"
+  )
+);
 
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
