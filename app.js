@@ -14,7 +14,7 @@ const auth = require("./middleware/authentication");
 
 const app = express();
 app.set("trust proxy", 1);
-app.get("/ip", (request, response) => response.send(request.ip));
+app.get("/", (request, response) => response.send("Jobs API service"));
 
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
