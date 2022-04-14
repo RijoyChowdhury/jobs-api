@@ -1,5 +1,8 @@
 require("dotenv").config();
 require("express-async-errors");
+// swagger dependencies
+const swaggerUI = require("swagger-ui-express");
+const YAML = require("yamljs");
 // security packages
 const helmet = require("helmet");
 const cors = require("cors");
@@ -11,6 +14,8 @@ const connectDB = require("./db/connect");
 const jobRouter = require("./routes/jobs");
 const authRouter = require("./routes/auth");
 const auth = require("./middleware/authentication");
+
+const swaggerDocument = YAML.load("./swagger.yaml");
 
 const app = express();
 app.set("trust proxy", 1);
@@ -30,6 +35,9 @@ app.use(express.json());
 app.use(helmet());
 app.use(cors());
 app.use(xss());
+
+// swagger document
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 // routes
 app.use("/api/v1/auth", authRouter);
