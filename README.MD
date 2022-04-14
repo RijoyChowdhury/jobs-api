@@ -48,15 +48,8 @@ Email Validation Regex
 - xss-clean
 - express-rate-limit
 
-#### Swagger UI
+#### Swagger API Document
 
-```yaml
-/jobs/{id}:
-  parameters:
-    - in: path
-      name: id
-      schema:
-        type: string
-      required: true
-      description: the job id
+```https://jobs-api-stg.herokuapp.com/api-docs/
+
 ```
