@@ -10,9 +10,9 @@ on:
     inputs:
       name:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
+        description: "Person to greet"
         # Default value if no value is explicitly provided
-        default: 'World'
+        default: "World"
         # Input has to be provided for the workflow to run
         required: true
 
@@ -25,6 +25,27 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "Hello ${{ github.event.inputs.name }}"
+      # Runs a single command using the runners shell
+      - name: Send greeting
+        run: echo "Hello ${{ github.event.inputs.name }}"
+
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      # this is the old way of triggering repo workflow using github actions api
+      # - run: |
+      #     curl -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" \
+      #       -H "Accept: application/vnd.github.everest-preview+json" \
+      #       -H "Content-Type: application/json" \
+      #       https://api.github.com/repos/docker-sstc/docker-notify/actions/workflows/main.yml/dispatches \
+      #       --data '{"ref": "master"}'
+      - uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.PAT_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'RijoyChowdhury',
+              repo: 'example-event-dispatcher-workflows',
+              workflow_id: 'ping.yml',
+              ref: 'master'
+            })
