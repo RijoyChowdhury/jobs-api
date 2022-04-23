@@ -47,5 +47,5 @@ jobs:
               owner: 'RijoyChowdhury',
               repo: 'example-event-dispatcher-workflows',
               workflow_id: 'ping.yml',
-              ref: 'master'
+              ref: 'main'
             })
