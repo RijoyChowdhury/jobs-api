@@ -49,6 +49,6 @@ jobs:
               workflow_id: 'ping.yml',
               ref: 'main',
               inputs: {
-                name: 'Mona the Octocat'
+                name: ${{ github.event.inputs.name }}
               }
             })
