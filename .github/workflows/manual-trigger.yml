@@ -47,5 +47,9 @@ jobs:
               owner: 'RijoyChowdhury',
               repo: 'example-event-dispatcher-workflows',
               workflow_id: 'ping.yml',
-              ref: 'main'
+              ref: 'main',
+              inputs: {
+                name: 'Mona the Octocat',
+                home: 'San Francisco, CA'
+              }
             })
