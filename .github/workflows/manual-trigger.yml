@@ -49,7 +49,6 @@ jobs:
               workflow_id: 'ping.yml',
               ref: 'main',
               inputs: {
-                name: 'Mona the Octocat',
-                home: 'San Francisco, CA'
+                name: 'Mona the Octocat'
               }
             })
